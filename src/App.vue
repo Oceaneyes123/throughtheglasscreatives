@@ -3,6 +3,7 @@
     <v-app-bar app color="white" dark>
       <div class="d-flex align-center">
         <v-img
+          eager
           class="mr-2"
           contain
           src="../src/assets/Through The Glass Creatives Logo Revamp (no BG_Favicon).png"
@@ -49,7 +50,10 @@
               <v-list-item
                 v-for="(nav, i) in navs"
                 :key="i"
-                @click="$router.push(`/${nav.toLowerCase()}`)"
+                @click="
+                  $router.push(`/${nav.toLowerCase()}`), (selectedNav = i)
+                "
+                :class="selectedNav == i ? 'text-main-active' : 'text-main'"
                 >{{ nav }}</v-list-item
               >
             </v-list>
@@ -58,9 +62,9 @@
       </div>
     </v-app-bar>
 
-    <v-main>
+    <v-main v-if="selectedNav == 1">
       <v-app>
-        <v-img src="../src/assets/banner-bg.png">
+        <v-img eager src="../src/assets/banner-bg.png">
           <v-container>
             <v-row>
               <v-col
@@ -84,6 +88,7 @@
               </v-col>
               <v-col cols="12" md="6" order="1" order-md="2">
                 <v-img
+                  eager
                   contain
                   :max-height="isMobile ? '300' : ''"
                   src="../src/assets/Through The Glass Home Page Art (no BG).png"
@@ -94,7 +99,7 @@
         </v-img>
       </v-app>
       <v-container>
-        <v-tabs grow centered slider-color="purple">
+        <v-tabs grow centered slider-color="purple" color="purple">
           <v-tab>
             <span :class="isMobile ? 'h5' : 'h4'">FOOD</span>
           </v-tab>
@@ -103,88 +108,300 @@
           </v-tab>
           <v-tab-item class="pa-5">
             <v-img
+              eager
               src="../src/assets/blog_01.jpg"
               :max-height="isMobile ? '115' : '300'"
             >
             </v-img>
+            <div class="mt-5 class h3 ">Healthy Foods</div>
             <v-container>
               <v-row>
                 <v-col cols="12" md="6">
-                  <v-img src="../src/assets/food1.jpg" max-height="300"></v-img>
+                  <v-card>
+                    <v-img eager src="../src/assets/food1.jpg" max-height="300">
+                      <v-container
+                        class="d-flex fill-height justify-end align-end"
+                      >
+                        <v-card
+                          color="yellow darken-2"
+                          class="pa-2 rounded-pill"
+                        >
+                          <div class="font-weight-bold">Read More</div>
+                        </v-card>
+                      </v-container>
+                    </v-img>
+                    <div class="h5 ma-3">Healthy foods you can serve</div>
+                  </v-card>
                 </v-col>
                 <v-col cols="12" md="6">
-                  <v-img src="../src/assets/food2.jpg" max-height="300"></v-img>
+                  <v-card>
+                    <v-img eager src="../src/assets/food2.jpg" max-height="300">
+                      <v-container
+                        class="d-flex fill-height justify-end align-end"
+                      >
+                        <v-card
+                          color="yellow darken-2"
+                          class="pa-2 rounded-pill"
+                        >
+                          <div class="font-weight-bold">Read More</div>
+                        </v-card>
+                      </v-container>
+                    </v-img>
+                    <div class="h5 ma-3">
+                      Breakfast: Start your day with an egg
+                    </div>
+                  </v-card>
                 </v-col>
                 <v-col cols="12" md="6">
-                  <v-img src="../src/assets/food3.jpg" max-height="300"></v-img>
+                  <v-card>
+                    <v-img eager src="../src/assets/food3.jpg" max-height="300">
+                      <v-container
+                        class="d-flex fill-height justify-end align-end"
+                      >
+                        <v-card
+                          color="yellow darken-2"
+                          class="pa-2 rounded-pill"
+                        >
+                          <div class="font-weight-bold">Read More</div>
+                        </v-card>
+                      </v-container>
+                    </v-img>
+                    <div class="h5 ma-3">
+                      How to prepare mushrooms for your meals?
+                    </div>
+                  </v-card>
                 </v-col>
                 <v-col cols="12" md="6">
-                  <v-img src="../src/assets/food4.jpg" max-height="300"></v-img>
+                  <v-card>
+                    <v-img eager src="../src/assets/food4.jpg" max-height="300">
+                      <v-container
+                        class="d-flex fill-height justify-end align-end"
+                      >
+                        <v-card
+                          color="yellow darken-2"
+                          class="pa-2 rounded-pill"
+                        >
+                          <div class="font-weight-bold">Read More</div>
+                        </v-card>
+                      </v-container>
+                    </v-img>
+                    <div class="h5 ma-3">
+                      The benefits of vegetables in your body
+                    </div>
+                  </v-card>
                 </v-col>
               </v-row>
             </v-container>
 
+            <div class="mt-5  h3 ">Breads</div>
+
             <v-container>
               <v-row>
                 <v-col cols="12" md="6">
-                  <v-img
-                    src="../src/assets/bread1.jpg"
-                    max-height="300"
-                  ></v-img>
+                  <v-card>
+                    <v-img
+                      eager
+                      src="../src/assets/bread1.jpg"
+                      max-height="300"
+                    >
+                      <v-container
+                        class="d-flex fill-height justify-end align-end"
+                      >
+                        <v-card
+                          color="yellow darken-2"
+                          class="pa-2 rounded-pill"
+                        >
+                          <div class="font-weight-bold">Read More</div>
+                        </v-card>
+                      </v-container>
+                    </v-img>
+                    <div class="h5 ma-3">
+                      All you need to know in baking
+                    </div>
+                  </v-card>
                 </v-col>
                 <v-col cols="12" md="6">
-                  <v-img
-                    src="../src/assets/bread2.jpg"
-                    max-height="300"
-                  ></v-img>
+                  <v-card>
+                    <v-img
+                      eager
+                      src="../src/assets/bread2.jpg"
+                      max-height="300"
+                    >
+                      <v-container
+                        class="d-flex fill-height justify-end align-end"
+                      >
+                        <v-card
+                          color="yellow darken-2"
+                          class="pa-2 rounded-pill"
+                        >
+                          <div class="font-weight-bold">Read More</div>
+                        </v-card>
+                      </v-container>
+                    </v-img>
+                    <div class="h5 ma-3">
+                      How to prepare your dough
+                    </div>
+                  </v-card>
                 </v-col>
                 <v-col cols="12" md="6">
-                  <v-img
-                    src="../src/assets/bread3.jpg"
-                    max-height="300"
-                  ></v-img>
+                  <v-card>
+                    <v-img
+                      eager
+                      src="../src/assets/bread3.jpg"
+                      max-height="300"
+                    >
+                      <v-container
+                        class="d-flex fill-height justify-end align-end"
+                      >
+                        <v-card
+                          color="yellow darken-2"
+                          class="pa-2 rounded-pill"
+                        >
+                          <div class="font-weight-bold">Read More</div>
+                        </v-card>
+                      </v-container>
+                    </v-img>
+                    <div class="h5 ma-3">
+                      The steps in making a delicious bread
+                    </div>
+                  </v-card>
                 </v-col>
                 <v-col cols="12" md="6">
-                  <v-img
-                    src="../src/assets/bread4.jpg"
-                    max-height="300"
-                  ></v-img>
+                  <v-card>
+                    <v-img
+                      eager
+                      src="../src/assets/bread1.jpg"
+                      max-height="300"
+                    >
+                      <v-container
+                        class="d-flex fill-height justify-end align-end"
+                      >
+                        <v-card
+                          color="yellow darken-2"
+                          class="pa-2 rounded-pill"
+                        >
+                          <div class="font-weight-bold">Read More</div>
+                        </v-card>
+                      </v-container>
+                    </v-img>
+                    <div class="h5 ma-3">
+                      Breads across the world - 10 best breads
+                    </div>
+                  </v-card>
                 </v-col>
               </v-row>
             </v-container>
           </v-tab-item>
           <v-tab-item class="pa-5">
-            <v-img src="../src/assets/blog_03.jpg" max-height="300"> </v-img>
+            <v-img eager src="../src/assets/blog_03.jpg" max-height="300">
+            </v-img>
+            <div class="mt-5 h3">Travel and Leisure</div>
             <v-container>
               <v-row>
                 <v-col cols="12" md="6">
-                  <v-img
-                    src="../src/assets/travel1.jpg"
-                    max-height="300"
-                  ></v-img>
+                  <v-card>
+                    <v-img
+                      eager
+                      src="../src/assets/travel1.jpg"
+                      max-height="300"
+                    >
+                      <v-container
+                        class="d-flex fill-height justify-end align-end"
+                      >
+                        <v-card
+                          color="yellow darken-2"
+                          class="pa-2 rounded-pill"
+                        >
+                          <div class="font-weight-bold">Read More</div>
+                        </v-card>
+                      </v-container>
+                    </v-img>
+                    <div class="h5 ma-3">
+                      Foods to cook to enjoy outdoor activities
+                    </div>
+                  </v-card>
                 </v-col>
                 <v-col cols="12" md="6">
-                  <v-img
-                    src="../src/assets/travel2.jpg"
-                    max-height="300"
-                  ></v-img>
+                  <v-card>
+                    <v-img
+                      eager
+                      src="../src/assets/travel2.jpg"
+                      max-height="300"
+                    >
+                      <v-container
+                        class="d-flex fill-height justify-end align-end"
+                      >
+                        <v-card
+                          color="yellow darken-2"
+                          class="pa-2 rounded-pill"
+                        >
+                          <div class="font-weight-bold">Read More</div>
+                        </v-card>
+                      </v-container>
+                    </v-img>
+                    <div class="h5 ma-3">
+                      Best places to visit around the world
+                    </div>
+                  </v-card>
                 </v-col>
                 <v-col cols="12" md="6">
-                  <v-img
-                    src="../src/assets/travel3.jpg"
-                    max-height="300"
-                  ></v-img>
+                  <v-card>
+                    <v-img
+                      eager
+                      src="../src/assets/travel3.jpg"
+                      max-height="300"
+                    >
+                      <v-container
+                        class="d-flex fill-height justify-end align-end"
+                      >
+                        <v-card
+                          color="yellow darken-2"
+                          class="pa-2 rounded-pill"
+                        >
+                          <div class="font-weight-bold">Read More</div>
+                        </v-card>
+                      </v-container>
+                    </v-img>
+                    <div class="h5 ma-3">
+                      10 Travel guide and tips for you
+                    </div>
+                  </v-card>
                 </v-col>
                 <v-col cols="12" md="6">
-                  <v-img
-                    src="../src/assets/travel4.jpg"
-                    max-height="300"
-                  ></v-img>
+                  <v-card>
+                    <v-img
+                      eager
+                      src="../src/assets/travel4.jpg"
+                      max-height="300"
+                    >
+                      <v-container
+                        class="d-flex fill-height justify-end align-end"
+                      >
+                        <v-card
+                          color="yellow darken-2"
+                          class="pa-2 rounded-pill"
+                        >
+                          <div class="font-weight-bold">Read More</div>
+                        </v-card>
+                      </v-container>
+                    </v-img>
+                    <div class="h5 ma-3">
+                      Find peace in the places you go
+                    </div>
+                  </v-card>
                 </v-col>
               </v-row>
             </v-container>
           </v-tab-item>
         </v-tabs>
+      </v-container>
+    </v-main>
+    <v-main v-else>
+      <v-container class="d-flex align-center justify-center fill-height">
+        <div class="h5 font-weight-thin">
+          <v-icon color="yellow" large>warning</v-icon>
+          Under maintenance
+        </div>
       </v-container>
     </v-main>
   </v-app>
